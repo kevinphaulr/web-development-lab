@@ -1,32 +1,127 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>3D Workshop Events</title>
+    <script src="jquery-4.0.0.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #333;
+            padding: 20px;
+        }
 
-<title>Events</title>
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 40px;
+        }
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="script.js"></script>
+        .event { 
+            border: 1px solid #333; 
+            padding: 15px; 
+            margin: 10px auto; 
+            width: 350px; 
+            border-radius: 12px; 
+            background: #fff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
+        .event:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .details { 
+            display: none; 
+            margin-top: 10px; 
+            padding: 10px; 
+            background: #f4f4f4; 
+            border-radius: 6px; 
+        }
+
+        .active-title { 
+            color: #667eea; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+        }
+
+        button { 
+            cursor: pointer; 
+            padding: 6px 12px; 
+            margin-top: 5px; 
+            border: none;
+            border-radius: 6px;
+            background: #667eea;
+            color: white;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #764ba2;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="event">
+    <h1>Upcoming 3D Workshop Events</h1>
 
-<h3>AI Workshop</h3>
+    <!-- Event 1 -->
+    <div class="event">
+        <h3>3D Modeling Basics</h3>
+        <p>Date: April 20, 2026</p>
+        <button class="show-btn">Show Details</button>
+        <div class="details">
+            <p>Learn foundational 3D modeling techniques using Blender and other tools.</p>
+            <button class="reg-btn">Register</button>
+        </div>
+    </div>
 
-<button class="toggle">Show Details</button>
+    <!-- Event 2 -->
+    <div class="event">
+        <h3>3D Animation Workshop</h3>
+        <p>Date: May 15, 2026</p>
+        <button class="show-btn">Show Details</button>
+        <div class="details">
+            <p>Create stunning 3D animations and bring characters to life using Maya.</p>
+            <button class="reg-btn">Register</button>
+        </div>
+    </div>
 
-<div class="details" style="display:none">
-<p>Learn AI Basics</p>
+    <!-- Event 3 -->
+    <div class="event">
+        <h3>Virtual Reality 3D Design</h3>
+        <p>Date: June 02, 2026</p>
+        <button class="show-btn">Show Details</button>
+        <div class="details">
+            <p>Build immersive 3D environments for VR applications using Unity.</p>
+            <button class="reg-btn">Register</button>
+        </div>
+    </div>
 
-<a href="register.html?event=AI Workshop">
-<button>Register</button>
-</a>
+    <script>
+    $(document).ready(function() {
+        $(".show-btn").click(function() {
+            var $card = $(this).closest(".event");
+            var $details = $card.find(".details");
+            var $title = $card.find("h3");
 
-</div>
+            $details.slideToggle();
 
-</div>
+            var isVisible = $details.is(":visible");
+            $(this).text(isVisible ? "Show Details" : "Hide Details");
 
+            $card.css("background-color", "#e3f2fd");
+            $title.addClass("active-title");
+
+            alert("Selected Event: " + $title.text());
+        });
+
+        $(".reg-btn").click(function() {
+            var eventName = $(this).closest(".event").find("h3").text();
+            window.location.href = "registration.html?event=" + encodeURIComponent(eventName);
+        });
+    });
+    </script>
 </body>
 </html>
