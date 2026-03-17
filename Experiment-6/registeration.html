@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Registration</title>
+    <script src="jquery-4.0.0.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 50px; }
+        .form-container { border: 1px solid #ccc; padding: 20px; width: 350px; border-radius: 8px; }
+        input[readonly] { background-color: #eee; border: 1px solid #999; cursor: not-allowed; }
+        input { width: 100%; padding: 8px; margin: 10px 0; }
+        button { background: #27ae60; color: white; border: none; padding: 10px; cursor: pointer; width: 100%; }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Register</h2>
+        <form id="regForm">
+            <label>Selected Event:</label>
+            <!-- READONLY text field as requested -->
+            <input type="text" id="eventBox" name="eventName" readonly>
+            
+            <label>Your Name:</label>
+            <input type="text" id="userName" placeholder="Enter your full name" required>
+            
+            <button type="submit">Submit Registration</button>
+        </form>
+    </div>
+
+    <script>
+    $(document).ready(function() {
+        // 1. Get the event name from URL
+        var params = new URLSearchParams(window.location.search);
+        var name = params.get('event');
+        if (name) {
+            $("#eventBox").val(name);
+        }
+
+        // 2. Handle form submission
+        $("#regForm").submit(function(e) {
+            e.preventDefault(); // Stop page reload
+            var finalEvent = $("#eventBox").val();
+            // Redirect to the success page
+            window.location.href = "success.html?event=" + encodeURIComponent(finalEvent);
+        });
+    });
+    </script>
+</body>
+</html>
