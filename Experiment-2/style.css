@@ -1,21 +1,83 @@
-body{
-font-family: Arial;
-background:#f4f4f4;
-text-align:center;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    text-align: center;
 }
 
-h1{
-color:darkblue;
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
 }
 
-input{
-padding:8px;
-margin:5px;
+/* 3D Card Effect */
+.card {
+    background: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transform: perspective(1000px) rotateX(3deg);
+    transition: 0.3s;
 }
 
-button{
-background:blue;
-color:white;
-padding:8px;
-border:none;
+.card:hover {
+    transform: perspective(1000px) rotateX(0deg) scale(1.02);
+}
+
+img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+video, audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+input, select, textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border: 2px solid #667eea;
+}
+
+button {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #764ba2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 15px;
+    }
 }
