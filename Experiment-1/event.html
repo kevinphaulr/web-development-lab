@@ -1,39 +1,150 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<title>Event Portal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Workshop Registration</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #fff;
+        text-align: center;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    /* 3D Card Effect */
+    .card {
+        background: #fff;
+        color: #000;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        transform: perspective(1000px) rotateX(3deg);
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: perspective(1000px) rotateX(0deg) scale(1.02);
+    }
+
+    img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    video, audio {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    input, select, textarea {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        background: #667eea;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    button:hover {
+        background: #764ba2;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+        .card {
+            padding: 15px;
+        }
+    }
+</style>
 </head>
 
 <body>
 
-<h1>Online Event Portal</h1>
+<div class="container">
+    <h1>3D Workshop Event Registration</h1>
 
-<img src="https://www.circleone.in/event-banners?srsltid=AfmBOorha6h4qkTPbOAupK7-A7ZcrthzqbXrohNrYB9mqZ94ENIVJ2_o" alt="Event Banner">
+    <div class="card">
 
-<h2>Event Registration</h2>
+        <!-- TC02: Image -->
+        <img src="banner.jpg" alt="Event Banner">
 
-<form>
+        <!-- TC03: Video -->
+        <video controls>
+            <source src="promo.mp4" type="video/mp4">
+            Your browser does not support video.
+        </video>
 
-Name:<br>
-<input type="text"><br><br>
+        <!-- TC04: Audio -->
+        <audio controls>
+            <source src="audio.mp3" type="audio/mpeg">
+            Your browser does not support audio.
+        </audio>
 
-Email:<br>
-<input type="email"><br><br>
+        <!-- Registration Form -->
+        <form id="form">
 
-Mobile:<br>
-<input type="tel"><br><br>
+            <!-- TC05 -->
+            <input type="text" placeholder="Full Name" required>
 
-Select Event:<br>
-<select>
-<option>AI Workshop</option>
-<option>Web Development</option>
-<option>Cyber Security</option>
-</select><br><br>
+            <input type="email" placeholder="Email" required>
 
-<input type="submit" value="Register">
+            <input type="date" required>
 
-</form>
+            <!-- TC07 -->
+            <label>Gender:</label>
+            <label><input type="radio" name="gender" required> Male</label>
+            <label><input type="radio" name="gender"> Female</label>
+
+            <select required>
+                <option value="">Select Workshop</option>
+                <option>AI Workshop</option>
+                <option>Web Development</option>
+                <option>3D Design</option>
+            </select>
+
+            <!-- TC08 -->
+            <textarea placeholder="Your Message" rows="4"></textarea>
+
+            <input type="file" accept=".jpg,.png,.pdf">
+
+            <!-- TC09 -->
+            <button type="submit">Register</button>
+
+        </form>
+
+        <p id="message"></p>
+
+    </div>
+</div>
+
+<script>
+    document.getElementById("form").addEventListener("submit", function(e) {
+        e.preventDefault();
+        document.getElementById("message").innerText = "Registration Successful!";
+    });
+</script>
 
 </body>
 </html>
