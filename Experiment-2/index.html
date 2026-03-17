@@ -1,26 +1,85 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<title>Styled Event Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Workshop Registration</title>
+
+<!-- External CSS -->
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<h1>Event Registration</h1>
+<main class="container">
+    <header>
+        <h1>3D Workshop Event Registration</h1>
+    </header>
 
-<form>
+    <section class="card">
 
-Name:
-<input type="text"><br><br>
+        <!-- Event Banner -->
+        <figure>
+            <img src="event banner.jpg" alt="3D Workshop Event Banner">
+            <figcaption>Join our 3D Workshop and explore creative designs!</figcaption>
+        </figure>
 
-Email:
-<input type="email"><br><br>
+        <!-- Promotional Video -->
+        <video controls>
+            <source src="promo.mp4" type="video/mp4">
+            Your browser does not support video.
+        </video>
 
-<button>Submit</button>
+        <!-- Audio Promo -->
+        <audio controls>
+            <source src="audio.mp3" type="audio/mpeg">
+            Your browser does not support audio.
+        </audio>
 
-</form>
+        <!-- Registration Form -->
+        <form id="registration-form" class="registration-form">
+
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <fieldset>
+                <legend>Gender</legend>
+                <label><input type="radio" name="gender" value="male" required> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+            </fieldset>
+
+            <label for="workshop">Select Workshop</label>
+            <select id="workshop" name="workshop" required>
+                <option value="">Select Workshop</option>
+                <option value="ai">AI Workshop</option>
+                <option value="web">Web Development</option>
+                <option value="3d">3D Design</option>
+            </select>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Your message here..." rows="4"></textarea>
+
+            <label for="file">Upload File</label>
+            <input type="file" id="file" name="file" accept=".jpg,.png,.pdf">
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p id="success-message" aria-live="polite"></p>
+    </section>
+</main>
+
+<script>
+document.getElementById("registration-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    document.getElementById("success-message").innerText = "Registration Successful!";
+});
+</script>
 
 </body>
 </html>
